@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+    <div id="value">0</div>
+    <div class="line"></div>
+    <div class="nav">
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+    <button id="reset">Сбросить</button>
+    </div>
+    <button id="close">Закрыть страницу</button>
+    </div>
+</body>
+<script>
+    function getCurrentValue () {
+    let value = document.getElementById('value')
+    const text = Number(value.textContent)    
+    return text
+    }
+     function increment () { 
+     let value = document.getElementById('value')
+    const plus = document.getElementById('plus')
+    if(value.textContent >= 10){
+        value.style.color = "red"
+    }     
+    value.textContent = getCurrentValue() + 1
+    }
+     plus.addEventListener('click', increment )
+    
+    function decrement () {
+        let value = document.getElementById('value')
+        const minus = document.getElementById('minus')
+        if(value.textContent <= 10){
+            value.style.color = "black"
+        }
+        if(value.textContent <= 0) {
+        value.textContent = getCurrentValue()
+        }else {
+        value.textContent = getCurrentValue() - 1
+        }
+      
+    }
+    minus.addEventListener('click', decrement)
+
+    function resetFunc () {
+      let value = document.getElementById('value')
+      const reset = document.getElementById('reset')
+      if(value.textContent){
+        value.style.color = "black"
+      }
+      value.textContent = 0
+    }
+    reset.addEventListener('click', resetFunc)
+    
+    const closeWeb = document.getElementById('close')
+    closeWeb.addEventListener('click', (e)=> {
+        e.target.parentElement.parentElement.parentElement.remove()
+    })
+    
+</script>
+</html>
